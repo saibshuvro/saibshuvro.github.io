@@ -68,7 +68,7 @@ These architecture decision records describe the repository state as of 2026-11-
 
 ## ADR-005 — GitHub Pages branch publishing
 
-**Status:** Accepted; remote creation and deployment pending Phases 7–8
+**Status:** Accepted; public repository and managed Pages run observed, deliberate deployment verification pending Phase 8
 
 **Context:** The repository already contains deployment-ready static files and needs no custom build. GitHub Pages supports publishing a selected branch and folder while GitHub operates the deployment infrastructure.
 
@@ -116,7 +116,7 @@ These architecture decision records describe the repository state as of 2026-11-
 
 ## ADR-008 — No custom GitHub Actions workflow
 
-**Status:** Accepted and implemented in source; managed Pages run pending deployment
+**Status:** Accepted and implemented; one GitHub-managed Pages run observed
 
 **Context:** The site needs no build, test environment, package installation, secret, or custom deployment step. A workflow file would add executable automation and permission review without solving a current problem.
 
@@ -132,7 +132,7 @@ These architecture decision records describe the repository state as of 2026-11-
 
 ## ADR-009 — SSH-signed commits and a narrow `main` ruleset
 
-**Status:** Accepted; signing implemented locally, GitHub verification and ruleset pending Phase 7
+**Status:** Accepted and implemented; signed-update enforcement test is the Phase 7 closeout
 
 **Context:** Content integrity depends primarily on the maintainer account and accepted Git history. The project has one maintainer and no CI status checks or mandatory review team.
 
@@ -140,7 +140,7 @@ These architecture decision records describe the repository state as of 2026-11-
 
 **Alternatives considered:** Unsigned commits, GPG signing, reusing the SSH authentication key, broad branch restrictions, or mandatory pull requests for a single maintainer.
 
-**Consequences:** Current commits have valid local SSH signatures, authentication and signing keys remain separated, and future branch enforcement has a specific minimal design. GitHub `Verified` state is not claimed before the first push.
+**Consequences:** First-push commits have valid local SSH signatures and GitHub `Verified` status, authentication and signing keys remain separated, and the active `main-integrity` ruleset requires signatures while blocking deletion and non-fast-forward pushes without adding pull-request or status-check ceremony.
 
 **Limitations:** A valid signature proves key use, not reviewer approval or benign content. A compromised key/account or authorized administrator may still cause harm, and ruleset enforcement depends on GitHub configuration and bypass permissions.
 

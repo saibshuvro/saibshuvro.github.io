@@ -64,6 +64,7 @@ docs/SECURITY_DECISIONS.md
 docs/INCIDENT_RESPONSE.md
 docs/verification/2026-11-26-account-security-review.md
 docs/verification/2026-11-26-pre-publication-review.md
+docs/verification/2026-11-26-repository-controls-review.md
 docs/verification/README.md'
 
 missing_required=0

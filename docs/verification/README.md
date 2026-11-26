@@ -11,9 +11,9 @@ This directory defines how the project tests its frozen constraints and records 
 | Portrait privacy inspection | [Complete](2026-11-26-pre-publication-review.md#portrait-and-content-review) | Release-gate marker and visual review passed |
 | GitHub account and email review | [Complete by owner attestation](2026-11-26-account-security-review.md) | Sanitized record retained; no sensitive settings evidence committed |
 | Full browser release matrix | [Complete locally](2026-11-26-pre-publication-review.md#browser-matrix) | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks passed |
-| Full-history secret scan | [Pre-evidence scan complete](2026-11-26-pre-publication-review.md#secret-scanning) | The exact signed public commit receives one more full-history scan immediately before first push |
-| GitHub repository/settings review | Pending Phases 7–9 | No public remote exists yet |
-| Pages deployment and HTTPS | Pending Phases 8–9 | The intended live URL is not treated as deployed |
+| Full-history secret scan | [Complete for first push](2026-11-26-pre-publication-review.md#secret-scanning) | Gitleaks `8.30.1` scanned the exact six-commit history with zero findings immediately before push |
+| GitHub repository/settings review | [Controls configured](2026-11-26-repository-controls-review.md) | Verified commits, secret protection, restricted Actions permissions, and active `main` ruleset reviewed; signed-update acceptance is the Phase 7 closeout test |
+| Pages deployment and HTTPS | Managed run observed; pending Phases 8–9 | GitHub completed an automatic managed deployment, but source, HTTPS, deployed commit, and live behavior are not yet treated as verified |
 | Live HTTP, browser, and 404 evidence | Pending Phase 9 | Requires a known deployed signed commit |
 
 ## Static verification
@@ -42,7 +42,7 @@ It checks:
 
 Outbound HTTPS links in anchor elements are permitted. Resource checks target loading attributes and `<link>` elements, so profile navigation is not mistaken for a runtime dependency.
 
-Supporting Phase 7 static checks remain separate because they require purpose-specific tools or judgment:
+Supporting release checks remain separate because they require purpose-specific tools or judgment:
 
 - full-history Gitleaks scanning with the installed version recorded;
 - review of every committed path and Git object intended for publication;

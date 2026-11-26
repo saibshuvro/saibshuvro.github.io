@@ -2,7 +2,7 @@
 
 ## Status
 
-The static site and local controls described here exist as of 2026-11-26. The public GitHub repository, repository ruleset, GitHub Pages configuration, HTTPS observations, and live verification remain pending Phases 7–9. The deployment sections describe the accepted target architecture and label unobserved controls accordingly.
+The static site, public repository, and local/repository controls described here exist as of 2026-11-26. GitHub has completed one automatic managed Pages run; deliberate publishing-source review, HTTPS and deployed-commit confirmation, and live verification remain pending Phases 8–9. The deployment sections label unobserved controls accordingly.
 
 ## System context
 
@@ -13,14 +13,14 @@ The static site and local controls described here exist as of 2026-11-26. The pu
  │ Git history ── SSH signing agent/private key │
  │ check.sh and local browser verification      │
  └──────────────────────┬────────────────────────┘
-                        │ signed push (pending)
+                        │ signed SSH push
              TB1: local / GitHub boundary
                         ▼
  GitHub control plane
  ┌───────────────────────────────────────────────┐
  │ Maintainer account and signing-key identity   │
- │ Public repository: main (pending)             │
- │ Ruleset and security settings (pending)       │
+ │ Public repository: main                       │
+ │ Active ruleset and security settings          │
  └──────────────────────┬────────────────────────┘
                         │ managed Pages deployment
              TB2: repository / hosting boundary
@@ -28,7 +28,7 @@ The static site and local controls described here exist as of 2026-11-26. The pu
  GitHub Pages
  ┌───────────────────────────────────────────────┐
  │ GitHub-managed workflow, origin, CDN, TLS     │
- │ Static files from main and /(root) (pending)  │
+ │ Managed run observed; live review pending     │
  └──────────────────────┬────────────────────────┘
                         │ HTTPS responses
               TB3: hosting / public internet
@@ -55,10 +55,10 @@ The signing private key and account-recovery material remain on the maintainer s
 | `styles/main.css` | All visual styling | Project | Implemented; local asset only |
 | `assets/portrait.jpg` | Approved public portrait | Project | Metadata-processed and inspected |
 | `scripts/check.sh` | Enforce frozen source constraints | Project | Implemented; positive and negative tested |
-| Local Git repository | Trusted history and recovery source | Project/maintainer | Five predecessor commits through Phase 6 have valid local signatures; release changes must also be signed before push |
+| Local Git repository | Trusted history and recovery source | Project/maintainer | First-push history valid locally and synchronized with `origin/main`; every update must remain signed |
 | GitHub account | Administrative identity and key association | GitHub/maintainer | Dedicated signing key registered; sanitized Phase 6 account/email review complete |
-| Public repository and ruleset | Store public history and enforce branch rules | GitHub/maintainer | Pending Phase 7 |
-| Managed Pages workflow | Transfer branch content into Pages hosting | GitHub | Pending Phase 8; no project workflow file |
+| Public repository and ruleset | Store public history and enforce branch rules | GitHub/maintainer | Public `main`; `main-integrity` active with required signatures, deletion restriction, force-push block, and no bypass actors |
+| Managed Pages workflow | Transfer branch content into Pages hosting | GitHub | One automatic managed run completed; no project workflow file; deliberate source review pending Phase 8 |
 | Pages origin, CDN, and TLS | Serve public files and HTTPS | GitHub | Pending Phase 8 observation |
 | Visitor browser | Enforce applicable policy and render files | Visitor/browser vendor | Local Chromium and Firefox release matrix complete; live matrix pending |
 
@@ -74,7 +74,7 @@ GitHub reads the configured publishing branch and runs its Pages deployment infr
 
 ### TB3 — Pages to the public browser
 
-GitHub controls TLS termination and response headers. The project controls HTML content, the meta-delivered CSP, the referrer meta policy, and local assets. The browser decides how supported policy is enforced. Live response and browser behavior remain unverified until deployment.
+GitHub controls TLS termination and response headers. The project controls HTML content, the meta-delivered CSP, the referrer meta policy, and local assets. The browser decides how supported policy is enforced. Live response and browser behavior remain unverified until the deliberate Phase 8–9 checks.
 
 ### TB4 — Portfolio to external destinations
 
@@ -82,7 +82,7 @@ Anchor navigation to GitHub, LinkedIn, and email leaves the project. No destinat
 
 ## Request flow
 
-The live request flow is pending Phase 8 deployment. Its intended sequence is:
+The managed deployment has run, but the live request flow remains pending Phase 8–9 verification. Its intended sequence is:
 
 1. A visitor requests `https://saibshuvro.github.io/`.
 2. GitHub's Pages edge terminates HTTPS and returns the static `index.html` selected from a deployed commit.
@@ -95,14 +95,14 @@ The custom 404 flow uses the same local CSS, icon, CSP, and referrer policy. Its
 
 ## Deployment flow
 
-The deployment flow is accepted but not active:
+The repository portion of the deployment flow is active; deliberate Pages verification remains pending:
 
 1. The maintainer reviews public content and runs local static, metadata, secret, and browser checks.
 2. The maintainer creates an SSH-signed commit. Local signature verification uses an untracked allowed-signers file under `.git/`.
-3. Phase 7 adds the reviewed public remote and pushes `main` only after account hardening and release checks pass.
-4. GitHub associates the public signing key and displays a `Verified` result when its verification succeeds. That status remains pending the first push.
-5. A narrow `main` ruleset requires signed commits and blocks force pushes and deletion, subject to configured bypass permissions. This control remains pending remote setup.
-6. Pages branch publishing selects `main` and `/(root)`. GitHub runs a managed Pages workflow even though the repository contains no custom workflow.
+3. Phase 7 added the reviewed public remote and pushed `main` only after account hardening and release checks passed.
+4. GitHub associates the public signing key and displays `Verified` for every first-push commit.
+5. The active `main-integrity` ruleset requires signed commits and blocks force pushes and deletion with no bypass actors.
+6. GitHub automatically ran its managed Pages workflow even though the repository contains no custom workflow; Phase 8 still confirms the effective branch source and deployed commit.
 7. The maintainer compares the deployed commit to the reviewed signed commit, checks HTTPS and redirects, and records sanitized live evidence.
 
 ## Control map
@@ -110,10 +110,10 @@ The deployment flow is accepted but not active:
 | Layer | Project-owned controls | GitHub-operated controls | Verification state |
 | --- | --- | --- | --- |
 | Browser | No JavaScript; local assets; exact meta CSP; `no-referrer`; no forms, embeds, storage, analytics, or API use | None for project HTML enforcement; browsers enforce supported policy | Source inspection, `check.sh`, local CSP probes, and Chromium/Firefox release matrix complete; live checks pending |
-| Repository | Small public tree; narrow `.gitignore`; signed local commits; no workflow or dependency files | Git storage, signature display, ruleset engine, audit/security features | Local signatures valid; remote protections and GitHub `Verified` pending |
+| Repository | Small public tree; narrow `.gitignore`; signed local commits; no workflow or dependency files | Git storage, signature display, ruleset engine, secret scanning, push protection, audit/security features | First-push signatures valid locally and `Verified` by GitHub; secret protection, restricted Actions permissions, and active narrow ruleset reviewed; signed-update closeout test pending |
 | Account | Dedicated signing key; private material excluded from Git | Authentication, sessions, key registration, security log, recovery mechanisms | Signing key registration and sanitized Phase 6 account/email review confirmed |
-| Deployment | Plain static files, `.nojekyll`, accepted `main`/`/(root)` source, no custom workflow | Managed Pages workflow, environment, hosting, CDN, TLS, service availability | Entire layer pending Phase 8–9 |
-| Verification | `check.sh`, manual review, disposable negative tests, public evidence rules | Deployment status, commit verification, security alerts and settings UI | Local static, browser, and pre-evidence Gitleaks checks complete; the exact release commit requires a final pre-push rescan; remote, deployment, and live evidence remain pending |
+| Deployment | Plain static files, `.nojekyll`, accepted `main`/`/(root)` design, no custom workflow | Managed Pages workflow, environment, hosting, CDN, TLS, service availability | Automatic managed run observed; publishing source, deployed commit, HTTPS, and live behavior pending Phases 8–9 |
+| Verification | `check.sh`, manual review, disposable negative tests, public evidence rules | Deployment status, commit verification, security alerts and settings UI | Local release checks and exact first-push Gitleaks scan complete; remote controls reviewed; signed-update and deployment/live evidence remain pending |
 
 Repository rulesets and account settings are project-selected but GitHub-enforced. An administrator may be able to change or bypass protections depending on actual permissions and configuration; rulesets therefore do not replace account security.
 

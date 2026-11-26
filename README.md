@@ -19,12 +19,12 @@ Implemented and observed locally:
 - same-origin-only CSS and images, with no external fonts or runtime dependencies;
 - `no-referrer`, no forms, no embedded content, and no browser storage;
 - a metadata-cleaned local portrait and an intentionally narrow set of public identity data;
-- a dependency-free static verifier with positive and negative self-tests; and
-- SSH-signed Git history, with all current signatures valid under the local allowed-signers configuration.
+- a dependency-free static verifier with positive and negative self-tests;
+- SSH-signed Git history, with all current signatures valid under the local allowed-signers configuration; and
+- a dated, sanitized owner review of GitHub authentication, recovery, sessions, credentials, integrations, public profile, and associated-email protection.
 
 Pending before publication:
 
-- the Phase 6 GitHub account and associated-email security review;
 - full-history secret scanning and the Phase 7 browser release matrix;
 - creation of the public repository and confirmation of GitHub's `Verified` state;
 - repository ruleset, Actions permission, secret-scanning, and push-protection review;

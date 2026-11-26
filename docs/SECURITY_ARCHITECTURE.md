@@ -55,8 +55,8 @@ The signing private key and account-recovery material remain on the maintainer s
 | `styles/main.css` | All visual styling | Project | Implemented; local asset only |
 | `assets/portrait.jpg` | Approved public portrait | Project | Metadata-processed and inspected |
 | `scripts/check.sh` | Enforce frozen source constraints | Project | Implemented; positive and negative tested |
-| Local Git repository | Trusted history and recovery source | Project/maintainer | Three locally valid SSH-signed commits before Phase 5 |
-| GitHub account | Administrative identity and key association | GitHub/maintainer | Dedicated signing public key registered; broader Phase 6 review pending |
+| Local Git repository | Trusted history and recovery source | Project/maintainer | Four locally valid SSH-signed commits through Phase 5 |
+| GitHub account | Administrative identity and key association | GitHub/maintainer | Dedicated signing key registered; sanitized Phase 6 account/email review complete |
 | Public repository and ruleset | Store public history and enforce branch rules | GitHub/maintainer | Pending Phase 7 |
 | Managed Pages workflow | Transfer branch content into Pages hosting | GitHub | Pending Phase 8; no project workflow file |
 | Pages origin, CDN, and TLS | Serve public files and HTTPS | GitHub | Pending Phase 8 observation |
@@ -111,7 +111,7 @@ The deployment flow is accepted but not active:
 | --- | --- | --- | --- |
 | Browser | No JavaScript; local assets; exact meta CSP; `no-referrer`; no forms, embeds, storage, analytics, or API use | None for project HTML enforcement; browsers enforce supported policy | Source inspection, `check.sh`, and local Chromium CSP probe complete; full matrix/live checks pending |
 | Repository | Small public tree; narrow `.gitignore`; signed local commits; no workflow or dependency files | Git storage, signature display, ruleset engine, audit/security features | Local signatures valid; remote protections and GitHub `Verified` pending |
-| Account | Dedicated signing key; private material excluded from Git | Authentication, sessions, key registration, security log, recovery mechanisms | Signing key registration confirmed; Phase 6 account/email review pending |
+| Account | Dedicated signing key; private material excluded from Git | Authentication, sessions, key registration, security log, recovery mechanisms | Signing key registration and sanitized Phase 6 account/email review confirmed |
 | Deployment | Plain static files, `.nojekyll`, accepted `main`/`/(root)` source, no custom workflow | Managed Pages workflow, environment, hosting, CDN, TLS, service availability | Entire layer pending Phase 8–9 |
 | Verification | `check.sh`, manual review, disposable negative tests, public evidence rules | Deployment status, commit verification, security alerts and settings UI | Local static evidence complete; Gitleaks, remote, deployment, and live evidence pending |
 

@@ -9,6 +9,7 @@ This directory defines how the project tests its frozen constraints and records 
 | Static source verifier | Complete | Valid site passes under `sh` and `dash`; eleven negative fixtures fail as expected |
 | Local CSP capability probe | Complete | Disposable Chromium-family probe observed representative script, style, image, and base-policy blocks |
 | Portrait privacy inspection | Complete locally | Processed JPEG contains no common EXIF/XMP/GPS/device/software/comment markers; release-gate recheck pending |
+| GitHub account and email review | [Complete by owner attestation](2026-11-26-account-security-review.md) | Sanitized record retained; no sensitive settings evidence committed |
 | Full browser release matrix | Pending Phase 7 | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks |
 | Full-history secret scan | Pending Phase 7 | Gitleaks version and redacted result not yet recorded |
 | GitHub repository/settings review | Pending Phases 7–9 | No public remote exists yet |

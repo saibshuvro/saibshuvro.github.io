@@ -63,6 +63,7 @@ docs/SECURITY_ARCHITECTURE.md
 docs/SECURITY_DECISIONS.md
 docs/INCIDENT_RESPONSE.md
 docs/verification/2026-11-26-account-security-review.md
+docs/verification/2026-11-26-pre-publication-review.md
 docs/verification/README.md'
 
 missing_required=0
@@ -238,6 +239,14 @@ if [ "$labels_failed" -eq 0 ]; then
 fi
 
 index_flat=$(tr '\n' ' ' < "$REPO_ROOT/index.html" | tr -s '[:space:]' ' ')
+tagline_count=$(grep -Fo -- 'Building backend systems with security in mind.' "$REPO_ROOT/index.html" | wc -l | tr -d ' ')
+if [ "$tagline_count" -eq 1 ] \
+  && printf '%s\n' "$index_flat" | grep -Eq -- '<p[[:space:]][^>]*class="profile__tagline"[^>]*>[[:space:]]*Building backend systems with security in mind\.[[:space:]]*</p>'; then
+  pass 'homepage contains the exact approved tagline once'
+else
+  fail 'homepage must contain the exact approved tagline once'
+fi
+
 portrait_tag=$(printf '%s\n' "$index_flat" | sed -n 's/.*\(<img[^>]*src="\/assets\/portrait.jpg"[^>]*>\).*/\1/p')
 if [ -n "$portrait_tag" ] \
   && printf '%s\n' "$portrait_tag" | grep -Eiq -- 'alt="[^"]+"' \

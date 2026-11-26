@@ -6,12 +6,12 @@ This directory defines how the project tests its frozen constraints and records 
 
 | Evidence class | Status on 2026-11-26 | Notes |
 | --- | --- | --- |
-| Static source verifier | Complete | Valid site passes under `sh` and `dash`; eleven negative fixtures fail as expected |
+| Static source verifier | Complete | Valid site passes under `sh` and `dash`; fourteen negative fixtures fail as expected |
 | Local CSP capability probe | Complete | Disposable Chromium-family probe observed representative script, style, image, and base-policy blocks |
-| Portrait privacy inspection | Complete locally | Processed JPEG contains no common EXIF/XMP/GPS/device/software/comment markers; release-gate recheck pending |
+| Portrait privacy inspection | [Complete](2026-11-26-pre-publication-review.md#portrait-and-content-review) | Release-gate marker and visual review passed |
 | GitHub account and email review | [Complete by owner attestation](2026-11-26-account-security-review.md) | Sanitized record retained; no sensitive settings evidence committed |
-| Full browser release matrix | Pending Phase 7 | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks |
-| Full-history secret scan | Pending Phase 7 | Gitleaks version and redacted result not yet recorded |
+| Full browser release matrix | [Complete locally](2026-11-26-pre-publication-review.md#browser-matrix) | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks passed |
+| Full-history secret scan | [Pre-evidence scan complete](2026-11-26-pre-publication-review.md#secret-scanning) | The exact signed public commit receives one more full-history scan immediately before first push |
 | GitHub repository/settings review | Pending Phases 7–9 | No public remote exists yet |
 | Pages deployment and HTTPS | Pending Phases 8–9 | The intended live URL is not treated as deployed |
 | Live HTTP, browser, and 404 evidence | Pending Phase 9 | Requires a known deployed signed commit |
@@ -36,7 +36,8 @@ It checks:
 - absence of insecure HTTP references and remote resource dependencies;
 - absence of CSS imports, external/protocol-relative CSS URLs, and JavaScript files;
 - existence of referenced local CSS and image files, including root-relative and relative paths;
-- the four approved homepage navigation labels; and
+- the four approved homepage navigation labels;
+- the exact approved homepage tagline, present once; and
 - nonempty alternative text and explicit dimensions on the portrait.
 
 Outbound HTTPS links in anchor elements are permitted. Resource checks target loading attributes and `<link>` elements, so profile navigation is not mistaken for a runtime dependency.
@@ -67,6 +68,8 @@ On 2026-11-25, the valid site passed syntax and execution checks under both `sh`
 
 All eleven fixtures exited nonzero and identified the expected violation. The disposable copies were removed after the test.
 
+On 2026-11-26, three additional disposable fixtures exercised the approved-tagline rule: one removed the tagline, one duplicated it, and one placed the exact text in a `div` rather than its required paragraph. All three exited nonzero and identified the expected violation. The unchanged complete candidate passed from the same disposable copy without a `.git` directory, and all fixtures were removed.
+
 ## Browser verification
 
 ### Completed local CSP probe
@@ -80,11 +83,11 @@ A disposable local Chromium-family test on 2026-11-25 observed the frozen policy
 - a cross-origin image; and
 - a hostile `<base>` element.
 
-The browser security log reported violations of `script-src 'none'`, `style-src 'self'`, `img-src 'self'`, and `base-uri 'none'`. The disposable probe was outside the repository and was removed. The exact browser version was not retained, so Phase 7 repeats policy tests as part of the release matrix rather than treating this probe as final browser evidence.
+The browser security log reported violations of `script-src 'none'`, `style-src 'self'`, `img-src 'self'`, and `base-uri 'none'`. The disposable probe was outside the repository and was removed. Its exact browser version was not retained, so the dated Phase 7 release matrix repeated policy tests in Chrome `158.0.8127.36` rather than treating the earlier probe as final browser evidence.
 
-### Pending pre-publication browser matrix
+### Completed pre-publication browser matrix
 
-Before the first push, record expected and observed behavior for:
+The dated pre-publication review records expected and observed behavior for:
 
 - Chromium-family desktop and mobile-sized views;
 - Firefox desktop and mobile-sized views;

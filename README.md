@@ -21,11 +21,13 @@ Implemented and observed locally:
 - a metadata-cleaned local portrait and an intentionally narrow set of public identity data;
 - a dependency-free static verifier with positive and negative self-tests;
 - SSH-signed Git history, with all current signatures valid under the local allowed-signers configuration; and
-- a dated, sanitized owner review of GitHub authentication, recovery, sessions, credentials, integrations, public profile, and associated-email protection.
+- a dated, sanitized owner review of GitHub authentication, recovery, sessions, credentials, integrations, public profile, and associated-email protection;
+- a pre-publication Gitleaks scan of the full signed history and changed working tree with zero findings; and
+- a Chromium and Firefox browser release matrix covering responsive layouts, keyboard focus, zoom, failure states, console/network behavior, and CSP negative tests.
 
 Pending before publication:
 
-- full-history secret scanning and the Phase 7 browser release matrix;
+- the final full-history secret rescan after the evidence commit;
 - creation of the public repository and confirmation of GitHub's `Verified` state;
 - repository ruleset, Actions permission, secret-scanning, and push-protection review;
 - GitHub Pages configuration, HTTPS deployment, and live HTTP/browser verification.

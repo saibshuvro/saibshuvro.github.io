@@ -6,7 +6,7 @@ These architecture decision records describe the repository state as of 2026-11-
 
 **Status:** Accepted and implemented locally
 
-**Context:** The portfolio displays a portrait, short biography, four links, and a custom error page. It has no dynamic data or application transaction.
+**Context:** The portfolio displays a portrait, short biography, one understated engineering tagline, four links, and a custom error page. It has no dynamic data or application transaction.
 
 **Decision:** Use handwritten semantic HTML and one CSS file with no runtime package, build tool, template engine, or framework.
 

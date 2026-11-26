@@ -68,6 +68,15 @@ h1 {
   text-wrap: balance;
 }
 
+.profile__tagline {
+  max-width: 34rem;
+  margin: clamp(1rem, 2vw, 1.35rem) auto 0;
+  color: var(--muted);
+  font-size: clamp(0.975rem, 1.3vw, 1.125rem);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
 .divider {
   display: grid;
   width: min(18rem, 72vw);
@@ -161,6 +170,11 @@ a:focus-visible {
     font-size: 1.0625rem;
     line-height: 1.62;
     text-wrap: pretty;
+  }
+
+  .profile__tagline {
+    margin-top: 1rem;
+    font-size: 0.9375rem;
   }
 
   .divider {

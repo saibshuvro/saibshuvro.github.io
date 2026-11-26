@@ -53,9 +53,16 @@ required_files='index.html
 404.html
 .gitignore
 .nojekyll
+README.md
+SECURITY.md
 assets/portrait.jpg
 styles/main.css
-scripts/check.sh'
+scripts/check.sh
+docs/THREAT_MODEL.md
+docs/SECURITY_ARCHITECTURE.md
+docs/SECURITY_DECISIONS.md
+docs/INCIDENT_RESPONSE.md
+docs/verification/README.md'
 
 missing_required=0
 while IFS= read -r relative_path; do

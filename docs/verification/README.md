@@ -12,8 +12,8 @@ This directory defines how the project tests its frozen constraints and records 
 | GitHub account and email review | [Complete by owner attestation](2026-11-26-account-security-review.md) | Sanitized record retained; no sensitive settings evidence committed |
 | Full browser release matrix | [Complete locally](2026-11-26-pre-publication-review.md#browser-matrix) | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks passed |
 | Full-history secret scan | [Complete for first push](2026-11-26-pre-publication-review.md#secret-scanning) | Gitleaks `8.30.1` scanned the exact six-commit history with zero findings immediately before push |
-| GitHub repository/settings review | [Controls configured](2026-11-26-repository-controls-review.md) | Verified commits, secret protection, restricted Actions permissions, and active `main` ruleset reviewed; signed-update acceptance is the Phase 7 closeout test |
-| Pages deployment and HTTPS | Managed run observed; pending Phases 8–9 | GitHub completed an automatic managed deployment, but source, HTTPS, deployed commit, and live behavior are not yet treated as verified |
+| GitHub repository/settings review | [Complete](2026-11-26-repository-controls-review.md) | Verified commits, secret protection, restricted Actions permissions, active `main` ruleset, and ordinary signed-update acceptance reviewed |
+| Pages deployment and HTTPS | [Phase 8 verified](2026-11-26-deployment-review.md) | `main`/`(root)`, known signed commit, managed deployment, HTTPS enforcement, redirect, exact public files, and mixed-content check passed; documentation follow-up deployment remains the closeout |
 | Live HTTP, browser, and 404 evidence | Pending Phase 9 | Requires a known deployed signed commit |
 
 ## Static verification
@@ -107,7 +107,7 @@ After Pages deployment, repeat the homepage, responsiveness, keyboard, console, 
 
 ## Live HTTP verification
 
-Live checks are pending until Phase 8 establishes a deployed site. Representative Phase 9 commands are:
+Phase 8 established a deployed HTTPS site. Representative Phase 9 commands are:
 
 ```sh
 curl -I https://saibshuvro.github.io/

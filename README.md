@@ -2,11 +2,11 @@
 
 This repository contains Saib Saleh Nabil's minimalist portfolio and its security engineering record. The site uses semantic HTML, one local CSS file, and one privacy-processed portrait; it has no application JavaScript, backend, database, authentication, form, analytics, runtime package, build step, or third-party runtime asset. The small architecture is deliberate: the project concentrates its controls on content integrity, browser policy, account and repository security, controlled publishing, and reproducible verification.
 
-**Live site:** GitHub completed an automatic managed Pages run after the first push. The intended address is `https://saibshuvro.github.io/`; the project does not treat that origin as verified until the deliberate Phase 8–9 source, HTTPS, deployment, HTTP, and browser checks pass.
+**Live site:** [https://saibshuvro.github.io/](https://saibshuvro.github.io/) is deployed from signed `main` and `/(root)` through GitHub's managed Pages workflow. Phase 8 verified the source, deployed commit, HTTPS enforcement, canonical redirect, and exact public files; the broader Phase 9 live-site matrix remains pending.
 
 ## Architecture
 
-The publication tree is served as static files. `index.html` provides the portfolio, `404.html` provides the error page, `styles/main.css` contains all styling, and `assets/portrait.jpg` is the only image. An empty `.nojekyll` keeps branch publishing on the plain-file path. The public repository exists with verified signed history and an active narrow `main` ruleset. GitHub has run its managed Pages workflow; deliberate deployment and live-origin verification remain pending.
+The publication tree is served as static files. `index.html` provides the portfolio, `404.html` provides the error page, `styles/main.css` contains all styling, and `assets/portrait.jpg` is the only image. An empty `.nojekyll` keeps branch publishing on the plain-file path. The public repository has verified signed history and an active narrow `main` ruleset. GitHub Pages publishes from `main` and `/(root)` through its managed workflow with HTTPS enforced and no custom domain.
 
 No visitor data is received or stored by project code. The site has no server-side component, cookies, browser storage, telemetry, or API requests. The Email link opens the visitor's configured mail client; GitHub and LinkedIn links navigate to those independent services.
 
@@ -30,8 +30,8 @@ Implemented and observed:
 
 Pending release verification:
 
-- acceptance and GitHub verification of the first ordinary signed update under the active ruleset; and
-- deliberate Pages source, HTTPS, deployed-commit, live HTTP, browser, and 404 verification.
+- follow-up deployment of this signed documentation update; and
+- the Phase 9 live response-header, responsive-browser, keyboard, console, network, outbound-link, and unique-path 404 matrix.
 
 See the [threat model](docs/THREAT_MODEL.md), [security architecture](docs/SECURITY_ARCHITECTURE.md), [decision records](docs/SECURITY_DECISIONS.md), and [verification guide](docs/verification/README.md) for the evidence and boundaries behind these statements.
 

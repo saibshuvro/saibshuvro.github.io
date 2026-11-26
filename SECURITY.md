@@ -8,9 +8,9 @@ Security reports are accepted for the current committed version of this portfoli
 - the local stylesheet and portrait;
 - the static verification script;
 - repository configuration or documentation that could cause unsafe publication; and
-- the public GitHub Pages site after deployment is explicitly marked complete in the README.
+- the public GitHub Pages site at `https://saibshuvro.github.io/`.
 
-The site is not deployed yet. Reports about an unavailable intended URL are therefore not actionable until Phase 8 is complete.
+The site is deployed. Availability reports are actionable when they identify behavior specific to this project; broad GitHub service incidents remain provider-owned.
 
 The following are outside this project's control:
 

@@ -29,7 +29,7 @@ Implemented and observed:
 - a Chromium and Firefox browser release matrix covering responsive layouts, keyboard focus, zoom, failure states, console/network behavior, and CSP negative tests; and
 - a dated Phase 9 live-site review covering HEAD and GET responses, the canonical redirect, same-origin assets, the approved content and links, a unique-path custom 404, CSP inspection, browser storage, and the active deployment/repository state.
 
-This Phase 9 evidence update is complete only when its commit is signed and accepted by the active ruleset. Ongoing quarterly and change-triggered checks begin in Phase 10.
+The initial release and post-deployment verification are complete. Ongoing quarterly, annual-tabletop, and change-triggered reviews follow the lightweight maintenance runbook; the next routine review is due `2027-02-26`.
 
 See the [threat model](docs/THREAT_MODEL.md), [security architecture](docs/SECURITY_ARCHITECTURE.md), [decision records](docs/SECURITY_DECISIONS.md), and [verification guide](docs/verification/README.md) for the evidence and boundaries behind these statements.
 
@@ -60,6 +60,7 @@ The command reads the publication tree, reports all detected violations, and exi
 - [Security architecture](docs/SECURITY_ARCHITECTURE.md) — components, trust boundaries, and flows
 - [Security decisions](docs/SECURITY_DECISIONS.md) — ADR-style records for major choices
 - [Incident response](docs/INCIDENT_RESPONSE.md) — public response framework and playbooks
+- [Security maintenance](docs/MAINTENANCE.md) — quarterly, annual, and change-triggered review procedure
 - [Verification guide](docs/verification/README.md) — checks, evidence format, and limitations
 
 ## Known limitations

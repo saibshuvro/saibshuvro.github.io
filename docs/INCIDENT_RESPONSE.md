@@ -145,4 +145,4 @@ Real recovery codes, phone numbers, private email recovery paths, tokens, privat
 
 ## Exercises and maintenance
 
-Walk through a hypothetical defacement at least annually after deployment. Confirm that the last trusted signed commit can be identified, private recovery instructions remain available outside this repository, the reporting address is monitored, and the public procedure still matches GitHub's current controls. Record the exercise date and sanitized lessons without disclosing recovery material.
+Walk through a hypothetical defacement at least annually after deployment. Confirm that the last trusted signed commit can be identified, private recovery instructions remain available outside this repository, the reporting address is monitored, and the public procedure still matches GitHub's current controls. Record the exercise date and sanitized lessons without disclosing recovery material. The operational cadence and evidence requirements are defined in [Security maintenance](MAINTENANCE.md).

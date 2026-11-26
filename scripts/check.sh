@@ -62,6 +62,7 @@ docs/THREAT_MODEL.md
 docs/SECURITY_ARCHITECTURE.md
 docs/SECURITY_DECISIONS.md
 docs/INCIDENT_RESPONSE.md
+docs/MAINTENANCE.md
 docs/verification/2026-11-26-account-security-review.md
 docs/verification/2026-11-26-pre-publication-review.md
 docs/verification/2026-11-26-repository-controls-review.md
@@ -69,6 +70,8 @@ docs/verification/2026-11-26-deployment-review.md
 docs/verification/2026-11-26-http-headers.txt
 docs/verification/2026-11-26-redirect-check.txt
 docs/verification/2026-11-26-browser-checklist.md
+docs/verification/2026-11-26-maintenance-baseline.md
+docs/verification/2026-11-26-incident-exercise.md
 docs/verification/README.md'
 
 missing_required=0

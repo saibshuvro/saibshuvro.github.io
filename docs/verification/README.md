@@ -16,6 +16,7 @@ This directory defines how the project tests its frozen constraints and records 
 | Pages deployment and HTTPS | [Phase 8 complete](2026-11-26-deployment-review.md) | `main`/`(root)`, signed deployed commits, managed deployment, HTTPS enforcement, redirect, exact public files, and mixed-content check passed |
 | Live HTTP, browser, and 404 evidence | [Phase 9 complete](2026-11-26-browser-checklist.md) | Dated [headers](2026-11-26-http-headers.txt), [redirect](2026-11-26-redirect-check.txt), browser, unique-path 404, CSP, link, deployment, and repository observations passed |
 | Maintenance and incident readiness | [Initial baseline](2026-11-26-maintenance-baseline.md) | Quarterly procedure established, nine-commit Gitleaks scan passed, documentation drift corrected, and [defacement exercise](2026-11-26-incident-exercise.md) passed |
+| Responsive viewport refinement | [Change-triggered review](2026-11-26-responsive-viewport-review.md) | Common desktop, laptop, and mobile portrait sizes fit initially; short and zoomed layouts retain accessible natural scrolling |
 
 ## Static verification
 

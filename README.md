@@ -6,7 +6,7 @@ This repository contains Saib Saleh Nabil's minimalist portfolio and its securit
 
 ## Architecture
 
-The publication tree is served as static files. `index.html` provides the portfolio, `404.html` provides the error page, `styles/main.css` contains all styling, and `assets/portrait.jpg` is the only image. An empty `.nojekyll` keeps branch publishing on the plain-file path. The public repository has verified signed history and an active narrow `main` ruleset. GitHub Pages publishes from `main` and `/(root)` through its managed workflow with HTTPS enforced and no custom domain.
+The publication tree is served as static files. `index.html` provides the portfolio, `404.html` provides the error page, `styles/main.css` contains all styling, and `assets/portrait.jpg` is the only image. Responsive sizing aims to keep the complete profile within common desktop, laptop, and mobile-portrait viewports while preserving natural scrolling for short screens, zoom, and enlarged text. An empty `.nojekyll` keeps branch publishing on the plain-file path. The public repository has verified signed history and an active narrow `main` ruleset. GitHub Pages publishes from `main` and `/(root)` through its managed workflow with HTTPS enforced and no custom domain.
 
 No visitor data is received or stored by project code. The site has no server-side component, cookies, browser storage, telemetry, or API requests. The Email link opens the visitor's configured mail client; GitHub and LinkedIn links navigate to those independent services.
 

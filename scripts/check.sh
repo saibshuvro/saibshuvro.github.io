@@ -72,6 +72,7 @@ docs/verification/2026-11-26-redirect-check.txt
 docs/verification/2026-11-26-browser-checklist.md
 docs/verification/2026-11-26-maintenance-baseline.md
 docs/verification/2026-11-26-incident-exercise.md
+docs/verification/2026-11-26-responsive-viewport-review.md
 docs/verification/README.md'
 
 missing_required=0

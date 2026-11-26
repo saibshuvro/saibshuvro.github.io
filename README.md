@@ -2,7 +2,7 @@
 
 This repository contains Saib Saleh Nabil's minimalist portfolio and its security engineering record. The site uses semantic HTML, one local CSS file, and one privacy-processed portrait; it has no application JavaScript, backend, database, authentication, form, analytics, runtime package, build step, or third-party runtime asset. The small architecture is deliberate: the project concentrates its controls on content integrity, browser policy, account and repository security, controlled publishing, and reproducible verification.
 
-**Live site:** [https://saibshuvro.github.io/](https://saibshuvro.github.io/) is deployed from signed `main` and `/(root)` through GitHub's managed Pages workflow. Phase 8 verified the source, deployed commit, HTTPS enforcement, canonical redirect, and exact public files; the broader Phase 9 live-site matrix remains pending.
+**Live site:** [https://saibshuvro.github.io/](https://saibshuvro.github.io/) is deployed from signed `main` and `/(root)` through GitHub's managed Pages workflow. Phases 8–9 verified the source, signed deployed commit, HTTPS enforcement, canonical redirect, exact public files, live response behavior, responsive browser layout, keyboard focus, CSP presence, same-origin resources, and custom 404.
 
 ## Architecture
 
@@ -26,12 +26,10 @@ Implemented and observed:
 - GitHub secret scanning and push protection with no reported alert;
 - restricted default Actions token permissions with pull-request creation/approval disabled;
 - an active default-branch ruleset requiring signatures and blocking deletion and force pushes; and
-- a Chromium and Firefox browser release matrix covering responsive layouts, keyboard focus, zoom, failure states, console/network behavior, and CSP negative tests.
+- a Chromium and Firefox browser release matrix covering responsive layouts, keyboard focus, zoom, failure states, console/network behavior, and CSP negative tests; and
+- a dated Phase 9 live-site review covering HEAD and GET responses, the canonical redirect, same-origin assets, the approved content and links, a unique-path custom 404, CSP inspection, browser storage, and the active deployment/repository state.
 
-Pending release verification:
-
-- follow-up deployment of this signed documentation update; and
-- the Phase 9 live response-header, responsive-browser, keyboard, console, network, outbound-link, and unique-path 404 matrix.
+This Phase 9 evidence update is complete only when its commit is signed and accepted by the active ruleset. Ongoing quarterly and change-triggered checks begin in Phase 10.
 
 See the [threat model](docs/THREAT_MODEL.md), [security architecture](docs/SECURITY_ARCHITECTURE.md), [decision records](docs/SECURITY_DECISIONS.md), and [verification guide](docs/verification/README.md) for the evidence and boundaries behind these statements.
 
@@ -67,7 +65,7 @@ The command reads the publication tree, reports all detected violations, and exi
 ## Known limitations
 
 - The CSP is delivered through HTML because this GitHub Pages design does not provide project-controlled response headers. Meta CSP cannot enforce `frame-ancestors`, `sandbox`, or reporting directives, so clickjacking remains an accepted residual risk. The site has no authenticated or state-changing operation, which limits the likely impact.
-- Project code cannot set headers such as `Permissions-Policy` or `X-Content-Type-Options` on GitHub Pages. Observed live headers remain pending live verification.
+- Project code cannot set headers such as `Permissions-Policy` or `X-Content-Type-Options` on GitHub Pages. The 2026-11-26 live review observed GitHub's HSTS, content type, caching, and CORS headers but did not observe project-controlled CSP, referrer, content-type-options, or framing headers. The CSP and referrer policy remain HTML-delivered.
 - GitHub operates the repository and hosting control planes. Platform compromise, administrator bypass, service outage, and large-scale denial of service are not independently preventable by this project.
 - Static pattern checks reduce accidental drift but are not a complete HTML/CSS parser or proof of security.
 - Public content and Git history can be copied or cached after publication. Removing later versions does not guarantee deletion from third-party copies.

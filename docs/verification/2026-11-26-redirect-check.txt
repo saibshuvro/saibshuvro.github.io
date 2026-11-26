@@ -1,0 +1,30 @@
+Phase 9 canonical redirect evidence
+===================================
+
+Date: 2026-11-26
+Observation time: 2026-11-26T14:54:09Z / 2026-11-26T20:54:09+06:00
+Operator: maintainer-assisted Codex verification
+Starting URL: http://saibshuvro.github.io/
+Expected final URL: https://saibshuvro.github.io/
+Deployed commit: ccd64191fb4934960373375026b9564d6f748238
+Tool: curl 8.5.0 (Ubuntu package build)
+
+Initial HEAD response
+---------------------
+
+HTTP/1.1 301 Moved Permanently
+Location: https://saibshuvro.github.io/
+
+Followed result
+---------------
+
+Redirect count: 1
+Final URL: https://saibshuvro.github.io/
+Final status: 200
+
+Expected: one permanent redirect from plain HTTP to the canonical HTTPS homepage.
+Observed: exactly one 301 redirect and a final HTTPS 200 response.
+Conclusion: PASS
+
+Transient request/CDN identifiers were intentionally omitted. The check used no
+authentication data.

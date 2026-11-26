@@ -13,8 +13,8 @@ This directory defines how the project tests its frozen constraints and records 
 | Full browser release matrix | [Complete locally](2026-11-26-pre-publication-review.md#browser-matrix) | Chromium, Firefox, keyboard, zoom, failure states, 404, console, and network checks passed |
 | Full-history secret scan | [Complete for first push](2026-11-26-pre-publication-review.md#secret-scanning) | Gitleaks `8.30.1` scanned the exact six-commit history with zero findings immediately before push |
 | GitHub repository/settings review | [Complete](2026-11-26-repository-controls-review.md) | Verified commits, secret protection, restricted Actions permissions, active `main` ruleset, and ordinary signed-update acceptance reviewed |
-| Pages deployment and HTTPS | [Phase 8 verified](2026-11-26-deployment-review.md) | `main`/`(root)`, known signed commit, managed deployment, HTTPS enforcement, redirect, exact public files, and mixed-content check passed; documentation follow-up deployment remains the closeout |
-| Live HTTP, browser, and 404 evidence | Pending Phase 9 | Requires a known deployed signed commit |
+| Pages deployment and HTTPS | [Phase 8 complete](2026-11-26-deployment-review.md) | `main`/`(root)`, signed deployed commits, managed deployment, HTTPS enforcement, redirect, exact public files, and mixed-content check passed |
+| Live HTTP, browser, and 404 evidence | [Phase 9 complete](2026-11-26-browser-checklist.md) | Dated [headers](2026-11-26-http-headers.txt), [redirect](2026-11-26-redirect-check.txt), browser, unique-path 404, CSP, link, deployment, and repository observations passed |
 
 ## Static verification
 
@@ -101,13 +101,13 @@ The dated pre-publication review records expected and observed behavior for:
 
 Do not add probes to committed source or the public site.
 
-### Pending post-deployment browser checks
+### Completed post-deployment browser checks
 
-After Pages deployment, repeat the homepage, responsiveness, keyboard, console, network, and custom-404 checks against the HTTPS origin. Confirm the browser sees the meta CSP and does not require an exception. A live check must name the URL and deployed commit.
+The [2026-11-26 live browser checklist](2026-11-26-browser-checklist.md) records the homepage, responsiveness, keyboard, console, network, storage, CSP, outbound-link, and custom-404 checks against the HTTPS origin in Chrome and Firefox. It names the URL, deployed commit, browser versions, viewports, expected behavior, observed behavior, and evidence limitations.
 
 ## Live HTTP verification
 
-Phase 8 established a deployed HTTPS site. Representative Phase 9 commands are:
+Phase 9 recorded the deployed HTTPS behavior. Representative reproduction commands are:
 
 ```sh
 curl -I https://saibshuvro.github.io/

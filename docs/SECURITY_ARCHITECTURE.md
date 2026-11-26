@@ -2,7 +2,7 @@
 
 ## Status
 
-The static site, public repository, repository controls, and GitHub Pages deployment described here exist as of 2026-11-26. Phase 8 confirmed `main` and `/(root)` branch publishing, a known signed deployed commit, managed deployment success, enforced HTTPS, the canonical redirect, and exact deployed files. The broader live-site matrix remains pending Phase 9.
+The static site, public repository, repository controls, and GitHub Pages deployment described here exist as of 2026-11-26. Phase 8 confirmed `main` and `/(root)` branch publishing, known signed deployed commits, managed deployment success, enforced HTTPS, the canonical redirect, and exact deployed files. Phase 9 confirmed the live response behavior, responsive browser layout, keyboard focus, same-origin resources, CSP presence, unique-path custom 404, and current public deployment/repository state.
 
 ## System context
 
@@ -59,8 +59,8 @@ The signing private key and account-recovery material remain on the maintainer s
 | GitHub account | Administrative identity and key association | GitHub/maintainer | Dedicated signing key registered; sanitized Phase 6 account/email review complete |
 | Public repository and ruleset | Store public history and enforce branch rules | GitHub/maintainer | Public `main`; `main-integrity` active with required signatures, deletion restriction, force-push block, and no bypass actors |
 | Managed Pages workflow | Transfer branch content into Pages hosting | GitHub | `main` and `/(root)` source verified; managed deployment of signed commit completed; no project workflow file |
-| Pages origin, CDN, and TLS | Serve public files and HTTPS | GitHub | HTTPS `200`, HTTP-to-HTTPS `301`, HSTS, and exact deployed files verified in Phase 8; broader live matrix pending |
-| Visitor browser | Enforce applicable policy and render files | Visitor/browser vendor | Local Chromium and Firefox release matrix complete; live matrix pending |
+| Pages origin, CDN, and TLS | Serve public files and HTTPS | GitHub | HTTPS HEAD/GET `200`, one-hop HTTP-to-HTTPS `301`, HSTS, unique-path `404`, and exact deployed files verified |
+| Visitor browser | Enforce applicable policy and render files | Visitor/browser vendor | Local release matrix and live Chrome/Firefox responsive review complete |
 
 ## Trust boundaries
 
@@ -82,7 +82,7 @@ Anchor navigation to GitHub, LinkedIn, and email leaves the project. No destinat
 
 ## Request flow
 
-Phase 8 observed the primary HTTPS request flow; Phase 9 repeats it as part of the broader live matrix. Its sequence is:
+Phases 8–9 observed the primary HTTPS request flow. Its sequence is:
 
 1. A visitor requests `https://saibshuvro.github.io/`.
 2. GitHub's Pages edge terminates HTTPS and returns the static `index.html` selected from a deployed commit.
@@ -91,7 +91,7 @@ Phase 8 observed the primary HTTPS request flow; Phase 9 repeats it as part of t
 5. The browser renders public text and links. Project code creates no cookies, local storage, telemetry, API request, or server-side record.
 6. Following a profile or Email link is a new navigation controlled by the browser and destination provider, not a project resource request.
 
-The custom 404 flow uses the same local CSS, icon, CSP, and referrer policy. Its live status-code behavior is pending a unique-path test in Phase 9.
+The custom 404 flow uses the same local CSS, icon, CSP, and referrer policy. A unique live path returned status `404`, served the checked-in error document byte-for-byte, loaded the same-origin CSS, and exposed a working home link.
 
 ## Deployment flow
 
@@ -109,11 +109,11 @@ The repository and Pages portions of the deployment flow are active and Phase 8 
 
 | Layer | Project-owned controls | GitHub-operated controls | Verification state |
 | --- | --- | --- | --- |
-| Browser | No JavaScript; local assets; exact meta CSP; `no-referrer`; no forms, embeds, storage, analytics, or API use | None for project HTML enforcement; browsers enforce supported policy | Source inspection, `check.sh`, local CSP probes, and Chromium/Firefox release matrix complete; live checks pending |
+| Browser | No JavaScript; local assets; exact meta CSP; `no-referrer`; no forms, embeds, storage, analytics, or API use | None for project HTML enforcement; browsers enforce supported policy | Source inspection, `check.sh`, local CSP probes, local release matrix, and live Chrome/Firefox review complete |
 | Repository | Small public tree; narrow `.gitignore`; signed local commits; no workflow or dependency files | Git storage, signature display, ruleset engine, secret scanning, push protection, audit/security features | Published signatures valid locally and `Verified` by GitHub; secret protection, restricted Actions permissions, active narrow ruleset, and ordinary signed update reviewed |
 | Account | Dedicated signing key; private material excluded from Git | Authentication, sessions, key registration, security log, recovery mechanisms | Signing key registration and sanitized Phase 6 account/email review confirmed |
-| Deployment | Plain static files, `.nojekyll`, `main`/`/(root)` source, no custom workflow or domain | Managed Pages workflow, environment, hosting, CDN, TLS, service availability | Source, signed deployed commit, managed run, HTTPS, redirect, and exact public files verified in Phase 8; broader live behavior pending Phase 9 |
-| Verification | `check.sh`, manual review, disposable negative tests, public evidence rules | Deployment status, commit verification, security alerts and settings UI | Local release checks, exact first-push scan, repository controls, and Phase 8 deployment evidence complete; live matrix pending Phase 9 |
+| Deployment | Plain static files, `.nojekyll`, `main`/`/(root)` source, no custom workflow or domain | Managed Pages workflow, environment, hosting, CDN, TLS, service availability | Source, signed deployed commits, managed runs, HTTPS, redirect, exact public files, live resources, and 404 verified in Phases 8–9 |
+| Verification | `check.sh`, manual review, disposable negative tests, public evidence rules | Deployment status, commit verification, security alerts and settings UI | Local release checks, exact first-push scan, repository controls, deployment evidence, and dated live HTTP/browser evidence complete |
 
 Repository rulesets and account settings are project-selected but GitHub-enforced. An administrator may be able to change or bypass protections depending on actual permissions and configuration; rulesets therefore do not replace account security.
 

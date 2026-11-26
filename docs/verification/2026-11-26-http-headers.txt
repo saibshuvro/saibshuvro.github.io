@@ -1,0 +1,67 @@
+Phase 9 live HTTP evidence
+==========================
+
+Date: 2026-11-26
+Observation time: 2026-11-26T14:54:09Z / 2026-11-26T20:54:09+06:00
+Operator: maintainer-assisted Codex verification
+Target: https://saibshuvro.github.io/
+Deployed commit: ccd64191fb4934960373375026b9564d6f748238
+Tool: curl 8.5.0 (Ubuntu package build)
+
+Expected
+--------
+
+- HTTPS HEAD and GET return 200.
+- The response is HTML and includes GitHub Pages' HTTPS transport policy.
+- A unique missing path returns the custom error document with status 404.
+- CSP is delivered in HTML, not claimed as an HTTP response header.
+
+Observed HTTPS HEAD
+-------------------
+
+HTTP/2 200
+content-type: text/html; charset=utf-8
+last-modified: Thu, 26 Nov 2026 14:45:21 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6b084601-967"
+cache-control: max-age=600
+content-length: 2407
+
+Observed HTTPS GET
+------------------
+
+HTTP/2 200
+content-type: text/html; charset=utf-8
+last-modified: Thu, 26 Nov 2026 14:45:21 GMT
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6b084601-967"
+cache-control: max-age=600
+content-length: 2407
+
+HEAD and GET agreed for the selected stable fields. The response did not include
+Content-Security-Policy, Referrer-Policy, X-Content-Type-Options, or
+X-Frame-Options headers. That is expected for this GitHub Pages design: the two
+project-controlled policies are delivered by HTML meta elements, and project code
+cannot add arbitrary response headers.
+
+Observed unique-path 404
+------------------------
+
+Path: /phase9-verification-missing-2026-11-26
+HTTP/2 404
+content-type: text/html; charset=utf-8
+access-control-allow-origin: *
+strict-transport-security: max-age=31556952
+etag: "6b084601-45b"
+content-length: 1115
+
+The response body was byte-for-byte identical to repository 404.html. It included
+the expected Page not found heading, same-origin stylesheet, and Return home link.
+
+Conclusion: PASS
+
+Transient CDN/request identifiers and unrelated headers were intentionally omitted.
+No authorization header, cookie, session value, or account-interface output was
+captured.

@@ -1,8 +1,8 @@
-# GitHub Pages deployment review — 2026-11-26
+# GitHub Pages deployment and post-deployment review — 2026-11-26
 
 ## Scope and target
 
-This Phase 8 record covers the GitHub Pages configuration and managed deployment of signed commit `ae4ba54a3061a2693db0c503f8509658fc0887ad` to `https://saibshuvro.github.io/`. Evidence combines public GitHub API responses, live HTTP/browser observations, and a sanitized owner review of the authenticated Pages settings. Account screenshots, cookies, authorization data, and private configuration exports are excluded.
+This record covers the Phase 8 GitHub Pages configuration and managed deployment of signed commit `ae4ba54a3061a2693db0c503f8509658fc0887ad`, its signed documentation follow-up `ccd64191fb4934960373375026b9564d6f748238`, and the Phase 9 public deployment/repository review for `https://saibshuvro.github.io/`. Evidence combines public GitHub API responses, live HTTP/browser observations, and sanitized owner review of authenticated settings. Account screenshots, cookies, authorization data, raw signatures, and private configuration exports are excluded.
 
 ## Publishing configuration
 
@@ -45,8 +45,19 @@ The following live resources returned `200` at their direct URLs and matched the
 | `assets/portrait.jpg` | `f07a4e88fc2a613c00aa49058d14998863a73985da5cfd6f0fe2201364099384` |
 | `404.html` | `57dafe928c0a74003ba30d4e5bb9a43faffbb57436e29b559aae4515a2f175a0` |
 
-## Phase boundary
+## Signed follow-up and Phase 8 closeout
 
-This record establishes the publishing source, known deployed signed commit, managed deployment success, HTTPS enforcement, canonical redirect, and absence of mixed content for the tested load. Phase 9 still performs the broader live response-header, unique-path 404, responsive, keyboard, console, network, and outbound-link verification against the deployed origin.
+The signed Phase 8 evidence update became commit `ccd64191fb4934960373375026b9564d6f748238`. GitHub marked it verified and completed managed Pages run `45842124644` successfully at `2026-11-26T14:45:26Z`. Deployment `8088371167` targeted the same commit and its final status was `success` at the public environment URL. This closed the Phase 8 follow-up gate.
 
-This documentation update must itself be signed, pushed through the active ruleset, marked `Verified`, and followed by a successful managed deployment before Phase 8 closes.
+## Phase 9 deployment and repository state
+
+The public API and local tree were reviewed again during the Phase 9 live check:
+
+- local `HEAD`, `origin/main`, the latest managed run, and the latest deployment all identified `ccd64191fb4934960373375026b9564d6f748238`;
+- GitHub reported that commit's verification as valid;
+- the only three workflow runs were the expected successful, dynamic, GitHub-managed `pages build and deployment` runs;
+- the repository contained no `.github/workflows/` path or other YAML workflow file;
+- the `main-integrity` ruleset remained active for the default branch, with no bypass actor and the `deletion`, `non_fast_forward`, and `required_signatures` rules; and
+- the same-day sanitized authenticated review documented read-only default Actions token permissions, pull-request creation/approval disabled, Secret Protection and push protection enabled, and no secret-scanning alert; no authorized change to those controls followed before this review.
+
+The broader live observations are recorded in the dated [headers](2026-11-26-http-headers.txt), [redirect](2026-11-26-redirect-check.txt), and [browser checklist](2026-11-26-browser-checklist.md) evidence. The public site passed those checks against the known signed commit. Raw API payloads and screenshots were not committed.
